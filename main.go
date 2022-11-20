@@ -1,12 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
-	"net/http"
-	"encoding/json"
-	"strconv"
 	"math/rand"
+	"net/http"
+	"strconv"
+
 	"github.com/gorilla/mux"
 )
 
@@ -59,7 +60,7 @@ func createMovie(w http.ResponseWriter, r *http.Request){
 	movie.ID = strconv.Itoa(rand.Intn(1000000))
 	movies = append(movies, movie)
 
-	json.NewEncoder(w).Encode(movie)
+	json.NewEncoder(w).Encode(movies)
 }
 
 func updateMovie(w http.ResponseWriter, r *http.Request){
